@@ -46,7 +46,7 @@ export const refreshThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     const persistedToken = getState().auth.token;
     if (!persistedToken) {
-      return rejectWithValue('Token is not find!');
+      return rejectWithValue('Token is not found!');
     }
     try {
       setToken(persistedToken);

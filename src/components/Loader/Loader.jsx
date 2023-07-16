@@ -7,15 +7,12 @@ export const Loader = () => {
       width="50"
       color="#000000"
       ariaLabel="bars-loading"
-      wrapperStyle={
-        {
-          // display: ' 0 auto',
-          // position: 'absolute',
-          // top: '50%',
-          // left: '50%',
-          // transform: 'translate(-50%, -50%)',
-        }
-      }
+      wrapperStyle={{
+        position: 'absolute',
+        top: '60%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+      }}
       wrapperClass={'Loader'}
       visible={true}
     />

@@ -12,32 +12,47 @@ const Navbar = () => {
   const isLoggedIn = useSelector(selectLoggedIn);
   return (
     <header className={css.header}>
-      {/* <NavLink className={css.logo} to="/">
-        <span>Phonebook</span>
-      </NavLink> */}
-      <h1 className={css.title}>Hello {user.name}</h1>
-      <nav className={css.nav}>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/contacts">Contacts</NavLink>
-      </nav>
-      <div>
-        {!isLoggedIn && (
-          <button onClick={() => navigate('/login')}>Log In</button>
-        )}
-        {!isLoggedIn && (
-          <button onClick={() => navigate('/signup')}>Sign Up</button>
-        )}
-        {isLoggedIn && (
-          <button
-            onClick={() =>
-              dispatch(logoutThunk())
-                .unwrap()
-                .then(() => navigate('/login'))
-            }
-          >
-            Exit
-          </button>
-        )}
+      <div className={css.container}>
+        <NavLink className={css.logo} to="/">
+          <span>Phonebook</span>
+        </NavLink>
+
+        <nav>
+          {isLoggedIn && (
+            <NavLink
+              className={css.navLink}
+              activeClassName={css.active}
+              to="/contacts"
+            >
+              Contacts
+            </NavLink>
+          )}
+        </nav>
+        <div className={css.authMenu}>
+          {isLoggedIn && <h1 className={css.title}>Hello {user.name}</h1>}
+          {!isLoggedIn && (
+            <button className={css.button} onClick={() => navigate('/login')}>
+              Log In
+            </button>
+          )}
+          {!isLoggedIn && (
+            <button className={css.button} onClick={() => navigate('/signup')}>
+              Sign Up
+            </button>
+          )}
+          {isLoggedIn && (
+            <button
+              className={css.button}
+              onClick={() =>
+                dispatch(logoutThunk())
+                  .unwrap()
+                  .then(() => navigate('/login'))
+              }
+            >
+              Exit
+            </button>
+          )}
+        </div>
       </div>
     </header>
   );

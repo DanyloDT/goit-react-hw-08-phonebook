@@ -19,12 +19,16 @@ const Contacts = () => {
 
   return (
     <div className={css.container}>
-      <h1 className={css.title}>Phonebook</h1>
-      <ContactForm />
-      <h2 className={css.title}>Contacts</h2>
-      <Filter />
+      <div>
+        <h2 className={css.title}>Phonebook</h2>
+        <ContactForm />
+      </div>
+      <div className={css.list}>
+        <h2 className={css.title}>Contacts</h2>
+        <Filter />
 
-      {isLoading ? <Loader /> : <ContactList />}
+        {isLoading ? <Loader /> : <ContactList />}
+      </div>
     </div>
   );
 };

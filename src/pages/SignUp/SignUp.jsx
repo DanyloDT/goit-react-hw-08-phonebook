@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signUpThunk } from 'redux/Auth/authOperations';
+import css from './SignUp.module.css';
 
 const initialState = {
   name: '',
@@ -24,11 +25,12 @@ const SignUp = () => {
     setCredentials('');
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>Name</span>
+    <div className={css.container}>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <label className={css.label}>
+          <span className={css.span}>Name</span>
           <input
+            className={css.input}
             name="name"
             value={name}
             onChange={handleChangeInput}
@@ -36,9 +38,10 @@ const SignUp = () => {
             placeholder="Enter your name..."
           />
         </label>
-        <label>
-          <span>Email</span>
+        <label className={css.label}>
+          <span className={css.span}>Email</span>
           <input
+            className={css.input}
             name="email"
             value={email}
             onChange={handleChangeInput}
@@ -46,9 +49,10 @@ const SignUp = () => {
             placeholder="Enter your email..."
           />
         </label>
-        <label>
-          <span>Password</span>
+        <label className={css.label}>
+          <span className={css.span}>Password</span>
           <input
+            className={css.input}
             name="password"
             value={password}
             onChange={handleChangeInput}
@@ -57,11 +61,13 @@ const SignUp = () => {
           />
         </label>
 
-        <button>Sign Up</button>
-        <hr />
-        <h2>
-          If you already have account lets to
-          <Link to="/login">Log In</Link>
+        <button className={css.button}>Sign Up</button>
+
+        <h2 className={css.title}>
+          If you have already got an account,
+          <Link className={css.link} to="/login">
+            Log In
+          </Link>
         </h2>
       </form>
     </div>

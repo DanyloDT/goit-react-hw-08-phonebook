@@ -1,16 +1,18 @@
-import Contacts from 'pages/Contacts/Contacts';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Home from 'pages/Home/Home';
-import SignUp from 'pages/SignUp/SignUp';
-import LogIn from 'pages/LogIn/LogIn';
 import PrivateRoute from 'hoc/PrivateRoute';
 import PublicRoute from 'hoc/PublicRoute';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { refreshThunk } from 'redux/Auth/authOperations';
 import { selectRefresh } from 'redux/Auth/authSelector';
 import { Loader } from 'components/Loader/Loader';
+import css from './App.module.css';
+
+const Contacts = lazy(() => import('pages/Contacts/Contacts'));
+const SignUp = lazy(() => import('pages/SignUp/SignUp'));
+const LogIn = lazy(() => import('pages/LogIn/LogIn'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -49,7 +51,10 @@ export const App = () => {
               </PublicRoute>
             }
           />
-          <Route path="*" element={<h1>Page is not Found</h1>} />
+          <Route
+            path="*"
+            element={<h1 className={css.title}>Page is not Found ...</h1>}
+          />
         </Route>
       </Routes>
     </div>
