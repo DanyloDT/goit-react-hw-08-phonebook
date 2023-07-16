@@ -1,20 +1,21 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import css from './App.module.css';
+import { ContactForm } from '../../components/ContactForm/ContactForm';
+import { ContactList } from '../../components/ContactList/ContactList';
+import { Filter } from '../../components/Filter/Filter';
+import css from './Contacts.module.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContactsThunk } from 'redux/operations';
-import { Loader } from './Loader/Loader';
+import { Loader } from '../../components/Loader/Loader';
 import { selectorLoading } from 'redux/selector';
+import { selectLoggedIn } from 'redux/Auth/authSelector';
 
-export const App = () => {
+const Contacts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectorLoading);
-
+  const isLoggedIn = useSelector(selectLoggedIn);
   useEffect(() => {
-    dispatch(fetchContactsThunk());
-  }, [dispatch]);
+    isLoggedIn && dispatch(fetchContactsThunk());
+  }, [dispatch, isLoggedIn]);
 
   return (
     <div className={css.container}>
@@ -27,3 +28,4 @@ export const App = () => {
     </div>
   );
 };
+export default Contacts;

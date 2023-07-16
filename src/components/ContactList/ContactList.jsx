@@ -14,11 +14,11 @@ export const ContactList = () => {
 
   return (
     <ul className={css.list}>
-      {filteredData.map(({ id, name, phone }) => {
+      {filteredData.map(({ id, name, number }) => {
         return (
           <li className={css.item} key={id}>
             <span className={css.item_text}>
-              {name}: {phone}
+              {name}: {number}
             </span>
             <button className={css.btn} onClick={() => handleDelete(id)}>
               Delete

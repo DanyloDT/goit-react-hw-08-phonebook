@@ -7,12 +7,12 @@ import { addContactThunk } from 'redux/operations';
 
 const INITIAL_STATE = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 export const ContactForm = () => {
   const [state, setState] = useState({ ...INITIAL_STATE });
-  const { name, phone } = state;
+  const { name, number } = state;
   const dispatch = useDispatch();
   const contacts = useSelector(selectorContacts);
 
@@ -31,7 +31,7 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addContactThunk({ name, phone }));
+    dispatch(addContactThunk({ name, number }));
     setState({ ...INITIAL_STATE });
   };
 
@@ -55,11 +55,11 @@ export const ContactForm = () => {
         <input
           className={css.contact_form_input}
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}[\s]?[\-]?\(?\d{1,3}?\)?[\s]?[\-]?\d{1,4}[\s]?[\-]?\d{1,4}[\s]?[\-]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={phone}
+          value={number}
           onChange={e => handleChange(e)}
         />
       </label>

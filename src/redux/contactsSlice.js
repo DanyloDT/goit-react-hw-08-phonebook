@@ -4,6 +4,7 @@ import {
   deleteContactThunk,
   fetchContactsThunk,
 } from './operations';
+import { logoutThunk } from './Auth/authOperations';
 
 const initialState = {
   contacts: [],
@@ -24,6 +25,9 @@ const contactsSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
+      .addCase(logoutThunk.fulfilled, state => {
+        state.contacts = [];
+      })
       .addCase(fetchContactsThunk.fulfilled, (state, action) => {
         state.contacts = action.payload;
         state.loading = false;
