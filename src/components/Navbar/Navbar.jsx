@@ -1,14 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import css from './Navbar.module.css';
-import { logoutThunk } from 'redux/Auth/authOperations';
-import { selectLoggedIn, selectUser } from 'redux/Auth/authSelector';
+
+import { selectLoggedIn } from 'redux/Auth/authSelector';
+import UserMenu from 'components/UserMenu/UserMenu';
+import AuthNav from 'components/AuthNav/AuthNav';
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const user = useSelector(selectUser);
   const isLoggedIn = useSelector(selectLoggedIn);
   return (
     <header className={css.header}>
@@ -16,43 +15,14 @@ const Navbar = () => {
         <NavLink className={css.logo} to="/">
           <span>Phonebook</span>
         </NavLink>
-
-        <nav>
-          {isLoggedIn && (
-            <NavLink
-              className={css.navLink}
-              activeClassName={css.active}
-              to="/contacts"
-            >
+        {isLoggedIn && (
+          <nav>
+            <NavLink className={css.navLink} to="/contacts">
               Contacts
             </NavLink>
-          )}
-        </nav>
-        <div className={css.authMenu}>
-          {isLoggedIn && <h1 className={css.title}>Hello {user.name}</h1>}
-          {!isLoggedIn && (
-            <button className={css.button} onClick={() => navigate('/login')}>
-              Log In
-            </button>
-          )}
-          {!isLoggedIn && (
-            <button className={css.button} onClick={() => navigate('/signup')}>
-              Sign Up
-            </button>
-          )}
-          {isLoggedIn && (
-            <button
-              className={css.button}
-              onClick={() =>
-                dispatch(logoutThunk())
-                  .unwrap()
-                  .then(() => navigate('/login'))
-              }
-            >
-              Exit
-            </button>
-          )}
-        </div>
+          </nav>
+        )}
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </div>
     </header>
   );

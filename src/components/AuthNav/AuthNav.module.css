@@ -1,0 +1,25 @@
+.authMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+.button {
+  display: block;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.64px;
+
+  padding: 8px 20px;
+  color: #4d5ae5;
+  border-radius: 7px;
+  border: 1px solid var(--cornflower, #e7e9fc);
+  background: var(--cloud, #f4f4fd);
+}
+.button:hover:not(.active) {
+  color: #ffffff;
+  background-color: #404bbf;
+}

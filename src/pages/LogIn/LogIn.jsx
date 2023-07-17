@@ -21,9 +21,7 @@ const LogIn = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(loginThunk(credentials))
-      .unwrap()
-      .then(() => {});
+    dispatch(loginThunk(credentials));
     setCredentials(initialState);
   };
 

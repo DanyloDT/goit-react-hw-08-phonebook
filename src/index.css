@@ -1,12 +1,6 @@
 /* @import-normalize; bring in normalize.css styles */
 
 :root {
-  /* Colors */
-  --blue-color: #57c336;
-  --white-color: #ffffff;
-  --black-color: #000000;
-  --light-blue-color: #272a28e9;
-  --hover-color: #080808cc;
   /* Shadows */
   --box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
